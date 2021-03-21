@@ -1,0 +1,25 @@
+.post-wrapper {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.post {
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px;
+  width: 75%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.post-full {
+  border: 2px solid black;
+  text-align: center;
+  padding: 5px;
+}
+
+.return-btns {
+  display: inline-flex;
+  margin: 10px;
+}
