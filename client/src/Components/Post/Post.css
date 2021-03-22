@@ -1,7 +1,16 @@
 .post-wrapper {
   border: 2px solid black;
   display: grid;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 5%;
+}
+.expand {
+  border: 2px solid black;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .post {
@@ -16,10 +25,25 @@
 .post-full {
   border: 2px solid black;
   text-align: center;
+  margin-top: 25px;
+  margin-left: 25%;
+  margin-right: 25%;
   padding: 5px;
 }
 
 .return-btns {
   display: inline-flex;
   margin: 10px;
+}
+
+.back {
+  margin-top: 10px;
+}
+
+.form-area {
+  display: grid;
+  margin-top: 5%;
+}
+.submit-btn {
+  width: 10%;
 }

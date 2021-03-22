@@ -144,7 +144,6 @@ export default class Post extends React.Component {
 
     expand = (e) => {
         e.preventDefault();
-        this.setState({isInEditMode: true})
         const post_id = {
             id: e.target.dataset.id
         } 
@@ -199,11 +198,9 @@ export default class Post extends React.Component {
             <div>
                 <div  className="post-full">
                         <h4 className="post-return" id="thought">{this.state.expandTitle}</h4>
-                        <p className="post-return">{this.state.expandEntry}</p>    
+                        <p className="post-return">{this.state.expandEntry}</p>  
+                        <button className="back" onClick={() => this.setState({showing: false})}>Close</button>  
                     </div>
-                    <div className="return-btns">
-                    <span className="close" onClick={() => this.setState({showing: false})}>&times;</span>
-                        </div>  
                 </div>
             )
         };
@@ -214,6 +211,7 @@ export default class Post extends React.Component {
     render() {
         return (
             <div className="post-page" data-testid="post-page-test">  
+            {this.state.isInEditMode === true || this.state.showing === true ? null :
                 <div className="container">
                     <form className="form-area" onSubmit={this.submit}>
                         <input type="text" name="title" value={this.state.title}
@@ -230,6 +228,7 @@ export default class Post extends React.Component {
                     <input className="submit-btn" type= "submit" value="Submit"/>
                     </form>
                 </div>
+                        }
                 { this.state.isInEditMode === false || this.state.showing === true ? null   : 
                         <div className="edit-container" id="edit-posts">
                             <h4 className="opinion-header"> Edit your post below... </h4>
@@ -244,13 +243,13 @@ export default class Post extends React.Component {
                                 </textarea>
                                 <div className="return-btns">
                                     <input  className="submit-btn" type="submit" value="Submit"/> 
-                                    <input className="cancel-btn" type="submit" value="Cancel" onSubmit={this.cancelUpdate}></input>   
+                                    <button className="cancel-btn"  onClick={this.cancelUpdate}> Cancel</button>   
                                 </div>          
                             </form>
                         </div> 
                         } 
-                <div className="post-wrapper">
-                    {this.state.showing === true ? this.fullPost(this.state.posts) : this.displayPosts(this.state.posts)}     
+                <div className={this.state.showing === false ? "post-wrapper" : "expand"}>
+                    {this.state.showing === true ? this.fullPost() : this.displayPosts(this.state.posts)}     
                     </div>
             </div>
         )
